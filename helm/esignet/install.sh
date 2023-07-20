@@ -15,7 +15,7 @@ echo Copy configmaps
 ./copy_cm.sh
 
 echo Installing esignet
-helm -n $NS install esignet mosip/esignet --version $CHART_VERSION
+helm -n $NS install esignet mosip/esignet --set image.repository=technogovstack/esignet --set image.tag=1.0.0 --version $CHART_VERSION
 
 kubectl -n $NS  get deploy -o name |  xargs -n1 -t  kubectl -n $NS rollout status
 

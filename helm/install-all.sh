@@ -21,7 +21,7 @@ helm repo add mosip https://mosip.github.io/mosip-helm
 helm repo update
 
 echo Installing Softhsm for esignet
-helm -n $SOFTHSM_NS install softhsm-esignet mosip/softhsm -f softhsm-values.yaml --version $SOFTHSM_CHART_VERSION --wait
+helm -n $SOFTHSM_NS install softhsm-esignet mosip/softhsm -f softhsm-values.yaml --set image.repository=technogovstack/softhsm --set image.tag=v2 --version $SOFTHSM_CHART_VERSION --wait
 echo Installed Softhsm for esignet
 
 echo Copy configmaps
