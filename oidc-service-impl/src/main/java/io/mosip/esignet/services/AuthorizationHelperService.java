@@ -223,6 +223,7 @@ public class AuthorizationHelperService {
             sendOtpDto.setOtpChannels(otpRequest.getOtpChannels());
             sendOtpResult = authenticationWrapper.sendOtp(transaction.getRelyingPartyId(), transaction.getClientId(),
                     sendOtpDto);
+            log.info("SEND OTP :: delegateSendOtpRequest :: " + sendOtpResult.toString());
         } catch (SendOtpException e) {
             log.error("Failed to send otp for transaction : {}", otpRequest.getTransactionId(), e);
             throw new EsignetException(e.getErrorCode());
