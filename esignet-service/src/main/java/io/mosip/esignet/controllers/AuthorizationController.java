@@ -50,9 +50,11 @@ public class AuthorizationController {
         ResponseWrapper responseWrapper = new ResponseWrapper();
         responseWrapper.setResponseTime(IdentityProviderUtil.getUTCDateTime());
         try {
+            log.info("SEND OTP :: Controller :: " + requestWrapper.getRequest().toString());
             responseWrapper.setResponse(authorizationService.sendOtp(requestWrapper.getRequest()));
         } catch (EsignetException ex) {
             auditWrapper.logAudit(Action.SEND_OTP, ActionStatus.ERROR, AuditHelper.buildAuditDto(requestWrapper.getRequest().getTransactionId(), null), ex);
+            log.error("SEND OTP :: Controller :: " + ex.getMessage());
             throw ex;
         }
         return responseWrapper;
