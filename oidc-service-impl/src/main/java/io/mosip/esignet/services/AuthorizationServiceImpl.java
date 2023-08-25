@@ -131,7 +131,9 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         if(transaction == null)
             throw new InvalidTransactionException();
 
+        log.info("SEND OTP :: sendOtp :: " + otpRequest.toString());
         SendOtpResult sendOtpResult = authorizationHelperService.delegateSendOtpRequest(otpRequest, transaction);
+        log.info("SEND OTP :: sendOtp :: " + sendOtpResult.toString());
         OtpResponse otpResponse = new OtpResponse();
         otpResponse.setTransactionId(otpRequest.getTransactionId());
         otpResponse.setMaskedEmail(sendOtpResult.getMaskedEmail());
