@@ -44,7 +44,7 @@ else
 fi
 
 echo "Attempting to install"
-cd ./$DIR_NAME && chmod +x install.sh && sudo ./install.sh
+cd ./$DIR_NAME && chmod +x install.sh && sudo -S ./install.sh 
 echo "Installation complete"
 cd $work_dir
 
