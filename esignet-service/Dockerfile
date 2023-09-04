@@ -52,7 +52,7 @@ ENV hsm_zip_file_path=${hsm_client_zip_path}
 ARG container_user=root
 
 # can be passed during Docker build as build time environment for github branch to pickup configuration from.
-ARG container_user_group=root
+ARG container_user_group=mosip
 
 # can be passed during Docker build as build time environment for github branch to pickup configuration from.
 ARG container_user_uid=1001
