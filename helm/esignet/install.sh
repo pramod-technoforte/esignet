@@ -6,7 +6,7 @@ if [ $# -ge 1 ] ; then
   export KUBECONFIG=$1
 fi
 
-NS=esignet
+NS=idbb-esignet
 CHART_VERSION=1.0.0
 
 ./keycloak-init.sh
@@ -19,4 +19,4 @@ helm -n $NS install esignet mosip/esignet --set image.repository=technogovstack/
 
 kubectl -n $NS  get deploy -o name |  xargs -n1 -t  kubectl -n $NS rollout status
 
-echo Installed esignet service
+echo Installed idbb-esignet service

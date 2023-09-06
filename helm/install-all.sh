@@ -9,7 +9,7 @@ fi
 
 ROOT_DIR=`pwd`
 
-SOFTHSM_NS=softhsm
+SOFTHSM_NS=idbb-softhsm
 SOFTHSM_CHART_VERSION=12.0.1-B2
 
 echo Create $SOFTHSM_NS namespace
@@ -25,23 +25,22 @@ helm -n $SOFTHSM_NS install softhsm-esignet mosip/softhsm -f softhsm-values.yaml
 echo Installed Softhsm for esignet
 
 echo Copy configmaps
-./copy_cm_func.sh configmap global default config-server
+./copy_cm_func.sh configmap global default idbb-config-server
 
 echo Copy secrets
-./copy_cm_func.sh secret softhsm-esignet softhsm config-server
+./copy_cm_func.sh secret softhsm-esignet idbb-softhsm idbb-config-server
 
-kubectl -n config-server set env --keys=mosip-esignet-host --from configmap/global deployment/config-server --prefix=SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_
-kubectl -n config-server set env --keys=security-pin --from secret/softhsm-esignet deployment/config-server --prefix=SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_ESIGNET_
-kubectl -n config-server get deploy -o name |  xargs -n1 -t  kubectl -n config-server rollout status
+kubectl -n idbb-config-server set env --keys=mosip-esignet-host --from configmap/global deployment/config-server --prefix=SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_
+kubectl -n idbb-config-server set env --keys=security-pin --from secret/softhsm-esignet deployment/config-server --prefix=SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_ESIGNET_
+kubectl -n idbb-config-server get deploy -o name |  xargs -n1 -t  kubectl -n idbb-config-server rollout status
 
 
-declare -a module=("redis"
+declare -a module=(#"redis"
                    "esignet"
 		           "oidc-ui"
                    )
 
 echo Installing esignet services
-
 for i in "${module[@]}"
 do
   cd $ROOT_DIR/"$i"
