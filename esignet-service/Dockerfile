@@ -49,16 +49,16 @@ ENV esignet_wrapper_url_env=${esignet_wrapper_url}
 ENV hsm_zip_file_path=${hsm_client_zip_path}
 
 # can be passed during Docker build as build time environment for github branch to pickup configuration from.
-ARG container_user=root
+ARG container_user=mosip
 
 # can be passed during Docker build as build time environment for github branch to pickup configuration from.
-#ARG container_user_group=mosip
+ARG container_user_group=mosip
 
 # can be passed during Docker build as build time environment for github branch to pickup configuration from.
-#ARG container_user_uid=1001
+ARG container_user_uid=1001
 
 # can be passed during Docker build as build time environment for github branch to pickup configuration from.
-#ARG container_user_gid=1001
+ARG container_user_gid=1001
 
 ARG hsm_local_dir=hsm-client
 
@@ -66,11 +66,11 @@ ENV hsm_local_dir_name=${hsm_local_dir}
 
 # install packages and create user
 RUN apt-get -y update \
-&& apt-get install -y unzip file 
-#&& groupadd -g ${container_user_gid} ${container_user_group} \
-#&& useradd -u ${container_user_uid} -g ${container_user_group} -s /bin/sh -m ${container_user} \
-#&& adduser ${container_user} sudo \
-#&& echo "%sudo ALL=(ALL) NOPASSWD:/home/${container_user}/${hsm_local_dir}/install.sh" >> /etc/sudoers
+&& apt-get install -y unzip file sudo \
+&& groupadd -g ${container_user_gid} ${container_user_group} \
+&& useradd -u ${container_user_uid} -g ${container_user_group} -s /bin/sh -m ${container_user} \
+&& adduser ${container_user} sudo \
+&& echo "%sudo ALL=(ALL) NOPASSWD:/home/${container_user}/${hsm_local_dir}/install.sh" >> /etc/sudoers
 
 
 # set working directory for the user
