@@ -1,4 +1,4 @@
-## e-Signet Service
+### e-Signet Service
 
 * Management - Endpoints for creation and updation of OIDC client details
 * OIDC - All OIDC compliant endpoints for performing the Open ID Connect flows
