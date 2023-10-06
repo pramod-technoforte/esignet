@@ -6,7 +6,7 @@ if [ $# -ge 1 ] ; then
   export KUBECONFIG=$1
 fi
 
-NS=redis
+NS=idbb-redis
 while true; do
     read -p "Are you sure you want to delete redis helm chart? Y/n ?" yn
     if [ $yn = "Y" ]
