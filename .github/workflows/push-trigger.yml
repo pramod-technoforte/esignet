@@ -20,6 +20,7 @@ on:
       - develop
       - MOSIP*
       - release*
+      - local*
 
 jobs:
   build-maven-esignet:
