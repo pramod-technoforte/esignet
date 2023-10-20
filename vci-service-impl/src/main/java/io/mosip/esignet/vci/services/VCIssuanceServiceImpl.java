@@ -28,6 +28,7 @@ import io.mosip.esignet.vci.pop.ProofValidator;
 import io.mosip.esignet.vci.pop.ProofValidatorFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.oauth2.jwt.JwtClaimNames;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,7 @@ public class VCIssuanceServiceImpl implements VCIssuanceService {
     @Autowired
     private ParsedAccessToken parsedAccessToken;
 
+    @Qualifier("esignet-service")
     @Autowired
     private VCIssuancePlugin vcIssuancePlugin;
 
