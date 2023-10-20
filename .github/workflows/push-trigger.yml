@@ -1,4 +1,5 @@
 name: Maven Package upon a push
+
 on:
   release:
     types: [published]
@@ -20,6 +21,7 @@ on:
       - MOSIP*
       - release*
       - local*
+
 jobs:
   build-maven-esignet:
     uses: mosip/kattu/.github/workflows/maven-build.yml@master
@@ -35,17 +37,6 @@ jobs:
 
   publish_to_nexus:
     if: "${{ !contains(github.ref, 'master') && github.event_name != 'pull_request' }}"
-
-    
-        
-          
-    
-
-        
-        Expand All
-    
-    @@ -47,7 +47,7 @@ jobs:
-  
     needs: build-maven-esignet
     uses: mosip/kattu/.github/workflows/maven-publish-to-nexus.yml@master
     with:
@@ -60,17 +51,6 @@ jobs:
 
 
   sonar_analysis:
-
-    
-        
-          
-    
-
-        
-        Expand All
-    
-    @@ -63,7 +63,7 @@ jobs:
-  
     needs: build-maven-esignet
     if: "${{  github.event_name != 'pull_request' }}"
     uses: mosip/kattu/.github/workflows/maven-sonar-analysis.yml@master
@@ -87,17 +67,6 @@ jobs:
 
   build-dockers:
     needs: build-maven-esignet
-
-    
-        
-          
-    
-
-        
-        Expand All
-    
-    @@ -84,7 +84,7 @@ jobs:
-  
     strategy:
       matrix:
         include:
@@ -119,17 +88,6 @@ jobs:
 
   build-dockers-oidc-ui:
     strategy:
-
-    
-        
-          
-    
-
-        
-        Expand All
-    
-    @@ -102,4 +102,4 @@ jobs:
-  
       matrix:
         include:
           - SERVICE_LOCATION: 'oidc-ui'
