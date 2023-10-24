@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,11 +51,7 @@ public class AuthenticationContextClassRefUtil {
     private String getMappingJson() {
         if(StringUtils.isEmpty(mappingJson)) {
             log.info("Fetching AMR-ACR mapping json from : {}", mappingFileUrl);
-            try {
-				mappingJson = Files.readString(Path.of(mappingFileUrl));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+            mappingJson = restTemplate.getForObject(mappingFileUrl, String.class);
         }
         return mappingJson;
     }
