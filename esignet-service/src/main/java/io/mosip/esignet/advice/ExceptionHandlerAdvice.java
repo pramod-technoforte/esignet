@@ -95,7 +95,7 @@ public class ExceptionHandlerAdvice extends ResponseEntityExceptionHandler imple
     @ExceptionHandler(value = { Exception.class, RuntimeException.class, MissingRequestHeaderException.class })
     public ResponseEntity handleExceptions(Exception ex, WebRequest request) {
         log.error("Unhandled exception encountered in handler advice", ex);
-        String pathInfo = ((ServletWebRequest)request).getRequest().getServletPath();
+        String pathInfo = ((ServletWebRequest)request).getRequest().getRequestURI();
 
         boolean isInternalAPI = pathInfo != null && (pathInfo.startsWith("/authorization") ||
                 pathInfo.startsWith("/client-mgmt/"));
