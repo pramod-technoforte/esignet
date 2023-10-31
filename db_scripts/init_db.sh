@@ -6,7 +6,7 @@ if [ $# -ge 1 ] ; then
   export KUBECONFIG=$1
 fi
 
-NS=esignet
+NS=idbb-esignet
 CHART_VERSION=12.0.1-B3
 
 helm repo add mosip https://mosip.github.io/mosip-helm

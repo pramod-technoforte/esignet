@@ -9,7 +9,7 @@ fi
 
 ROOT_DIR=`pwd`
 
-declare -a module=("redis"
+declare -a module=(#"redis"
                    "esignet"
 		   "oidc-ui"
                    )
