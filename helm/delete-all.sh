@@ -9,10 +9,9 @@ fi
 
 ROOT_DIR=`pwd`
 
-declare -a module=("redis"
-                   "esignet"
-		   "oidc-ui"
-                   )
+declare -a module=("esignet"
+		               "oidc-ui"
+                  )
 
 echo Installing esignet services
 

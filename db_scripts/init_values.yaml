@@ -58,7 +58,7 @@ databases:
   
   mosip_esignet:
     enabled: true
-    host: "postgres-postgresql.postgres"
+    host: "postgres-postgresql.idbb-postgres"
     port: 5432
     su:
       user: postgres

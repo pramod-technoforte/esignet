@@ -6,6 +6,9 @@
 ## Install 
 * Set `values.yaml` to run onboarder for specific modules.
 * run `./install.sh`.
+* Region `ignore this`
+* bucket name `onboarder`.
+* Minio URL `http//minio.idbb-minio:9000`.
 ```
 ./install.sh
 ```
@@ -27,7 +30,7 @@
  
  3. Upload of certificate will not be allowed to update other domain certificate
  
-    Resolution: This is expected when you try to upload `ida-cred` certificate twice. It should only run once and if you see this error while uploading a second      time it can be ignored as the cert is already present.
+    Resolution: This is expected when you try to upload `ida-cred` certificate twice. It should only run once and if you see this error while uploading a second time it can be ignored as the cert is already present.
 
 
 

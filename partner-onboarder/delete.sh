@@ -7,7 +7,7 @@ if [ $# -ge 1 ] ; then
 fi
 
 function deleting_onboarder() {
-  NS=esignet
+  NS=idbb-esignet
   while true; do
       read -p "Are you sure you want to delete all partner-onboarder ?(Y/n) " yn
       if [ $yn = "Y" ]; then

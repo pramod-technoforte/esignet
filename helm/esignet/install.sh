@@ -19,4 +19,4 @@ helm -n $NS install esignet mosip/esignet --set image.repository=technogovstack/
 
 kubectl -n $NS  get deploy -o name |  xargs -n1 -t  kubectl -n $NS rollout status
 
-echo Installed idbb-esignet service
+echo Installed esignet service
