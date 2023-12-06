@@ -18,6 +18,7 @@ kubectl create ns $SOFTHSM_NS
 echo Istio label
 kubectl label ns $SOFTHSM_NS istio-injection=enabled --overwrite
 helm repo add mosip https://mosip.github.io/mosip-helm
+helm repo add mosip https://tf-govstack.github.io/mosip-helm
 helm repo update
 
 echo Installing Softhsm for esignet
